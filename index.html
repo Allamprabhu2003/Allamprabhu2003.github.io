@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allamprabhu Hiremath - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #f39c12;
+            --bg-color: #f4f4f4;
+            --text-color: #333;
+            --card-bg: #ffffff;
+        }
+
+        .dark-mode {
+            --primary-color: #64b5f6;
+            --secondary-color: #ffa726;
+            /* --bg-color: #121212; */
+            --bg-color: #222;
+            --text-color: #e0e0e0;
+            --card-bg: #1e1e1e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        section {
+            padding: 5rem 2rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .profile-picture {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-color);
+            margin-bottom: 2rem;
+        }
+
+        .about-content {
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .skill:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+        }
+
+        .project h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .project-link:hover {
+            color: var(--secondary-color);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        footer ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        footer ul li {
+            margin: 0 1rem;
+        }
+
+        footer ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        #dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 1000;
+        }
+
+        #dark-mode-toggle:hover {
+            background-color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+            }
+
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <h1 class="logo">AH</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <img src="ap.png" alt="Allamprabhu Hiremath" class="profile-picture">
+            <div class="about-content">
+                <h2>Allamprabhu Hiremath</h2>
+                <p>BCA graduate with a passion for programming, database management, web technologies, and data analysis. I thrive on turning theoretical knowledge into practical solutions and am eager to contribute my skills to innovative projects in a collaborative environment.</p>
+                <a href="#contact" class="btn">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <div class="skill">
+                    <i class="fas fa-code"></i>
+                    <h3>Programming Languages</h3>
+                    <p>C, Java, Python, R, C#</p>
+                </div>
+                <div class="skill">
+                    <i class="fas fa-database"></i>
+                    <h3>Database Management</h3>
+                    <p>MySQL, PostgreSQL, SQLite</p>
+                </div>
+                <div class="skill">
+                    <i class="fas fa-globe"></i>
+                    <h3>Web Technologies</h3>
+                    <p>HTML, CSS, JavaScript, Flask, Node.js</p>
+                </div>
+                <div class="skill">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Data Analytics</h3>
+                    <p>Pandas, Matplotlib, Numpy, scikit-learn</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="skill">
+                <h3>BCA Graduate</h3>
+                <p>Shri S. R. Kanthi College, Mudhol, Bagalkot, Karnataka</p>
+                <p>Affiliated with Rani Channamma University, Belagavi</p>
+                <p>CGPA: 8.7 (till 5th semester)</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2>Experience</h2>
+            <div class="skill">
+                <h3>Full-Stack Web Developer Intern</h3>
+                <p>Info-Kshetra Technologies</p>
+                <p>Applied theoretical knowledge to real-world projects, enhancing skills in web development and problem-solving.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects">
+                <div class="project">
+                    <h3>Automatic Attendance System Using Computer Vision</h3>
+                    <p>Developed an innovative system leveraging facial recognition to automate attendance tracking for educational institutions and workplaces. This solution ensures real-time monitoring, accuracy, and efficiency by integrating cutting-edge computer vision technology with a user-friendly interface.</p>
+                    <a href="https://github.com/Allamprabhu2003/flask" target="_blank" class="project-link"><i class="fab fa-github"></i> View Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <ul>
+                <li><i class="fas fa-map-marker-alt"></i> Mudhol, Bagalkot, Karnataka - 587313, India</li>
+                <li><i class="fas fa-envelope"></i> <a href="mailto:allamprabhuhiremath9@gmail.com">allamprabhuhiremath9@gmail.com</a></li>
+                <li><i class="fas fa-phone"></i> +91 6364343113</li>
+                <li><i class="fab fa-github"></i> <a href="https://github.com/Allamprabhu2003" target="_blank">github.com/Allamprabhu2003</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <button id="dark-mode-toggle"><i class="fas fa-moon"></i></button>
+
+    <script>
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            darkModeToggle.innerHTML = body.classList.contains('dark-mode') ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // Intersection Observer for Fade-in Effect
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        });
+
+        document.querySelectorAll('section').forEach((section) => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
